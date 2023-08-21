@@ -13,6 +13,14 @@ export const constant = {
                 ID: 'custpage_partner',
                 LABEL: 'Vendedor'
             },
+            ENVIO_EMAIL: {
+                ID: 'custpage_enviar_email',
+                label: 'Enviar Email'
+            },
+            EMAIL: {
+                ID: 'custpage_email',
+                label: 'Emails'
+            },
             DATA_DE: {
                 ID: 'custpage_date_de',
                 LABEL: 'DATA DE'
@@ -32,14 +40,19 @@ export const constant = {
         CREATEFROM: 'createdfrom',
         NF: 'custbody_enl_fiscaldocnumber',
         CLIENTE: 'entity',
-        TOTAL: 'amount'
+        TOTAL: 'amount',
+        PUXADA: 'custbody_jtc_valor_puxada'
     },
     PARTNER: {
         ID: 'partner',
-        COMISSAO: 'custentity3'
+        COMISSAO: 'custentity3',
+        EMAIL: 'email'
     },
     CUSTOMER: {
         ID: 'customer',
         NAME: 'companyname'
+    },
+    SALES_ORDER: {
+        PUXADA: 'custbody_jtc_valor_puxada'
     }
 }
