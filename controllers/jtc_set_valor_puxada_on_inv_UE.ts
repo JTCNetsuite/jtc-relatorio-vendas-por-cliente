@@ -10,7 +10,10 @@ import * as log from "N/log"
 
 export const beforeSubmit: EntryPoints.UserEvent.beforeSubmit = (ctx: EntryPoints.UserEvent.beforeSubmitContext) => {
     try {
-        MSR.beforeSubmit(ctx)
+        if (ctx.type == ctx.UserEventType.CREATE || ctx.type == ctx.UserEventType.EDIT) {
+
+            MSR.beforeSubmit(ctx)
+        }
     } catch (e) {
         log.error("jtc_set_valor_puxada_UE.beforeSubmit", e)
     }
