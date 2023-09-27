@@ -122,12 +122,17 @@ const postForm = (form: UI.Form, ctx: EntryPoints.Suitelet.onRequestContext)  =>
         }
 
 
-        filters.push(["mainline", search.Operator.IS, "T"])
+        filters.push(["mainline", search.Operator.IS, "T"],
+            "AND", 
+            ["type","anyof","CustCred","CustInvc"],
+            "AND",
+            ["status","noneof","CustInvc:V"]
+        )
 
         log.debug('filters', filters)
 
         const searchInvoice = search.create({
-            type: search.Type.INVOICE,
+            type: search.Type.TRANSACTION,
             filters: filters,
             columns: [
                 search.createColumn({name: CTS.INVOICE.CREATEFROM}),
@@ -143,6 +148,7 @@ const postForm = (form: UI.Form, ctx: EntryPoints.Suitelet.onRequestContext)  =>
 
         log.debug('searchInvoide', searchInvoice.length)
 
+
         const page = pageHtml(searchInvoice, partner_diplay, data_de, data_ate)
 
         if (email_check == "T" || email_check == true) {
@@ -151,7 +157,7 @@ const postForm = (form: UI.Form, ctx: EntryPoints.Suitelet.onRequestContext)  =>
                 name: 'relatorio.html',
                 fileType: file.Type.HTMLDOC,
                 contents: page,
-                folder: 964,
+                folder: 1160,
                 isOnline: true
             }).save()
             const urlfile = file.load({id: createFile}).url
@@ -283,13 +289,13 @@ const pageHtml = (invoices: search.Result[], partner: string, data_de, data_ate)
 
         html += '<tr>'
 
-        html += `<td><strong>${saleorderNum}<strong></td>`
-        html += `<td>${invoices[i].getValue({name: CTS.INVOICE.NF})}</td>`
-        html += `<td style="font-size: 16px">${invoices[i].getValue({name: CTS.CUSTOMER.NAME, join: CTS.CUSTOMER.ID})}</td>`
-        html += `<td>${invoices[i].getValue({name: CTS.INVOICE.DATA_FATURAMENTO})}</td>`
-        html += `<td style="text-align: end;">${formatarMoeda(valor)}</td>`
-        html += `<td style="text-align: end;">${com}</td>`
-        html += `<td style="text-align: end;">${formatarMoeda(comissao)}</td>`
+        html += `<td style="font-size: 10px"><strong>${saleorderNum}<strong></td>`
+        html += `<td style="font-size: 10px">${invoices[i].getValue({name: CTS.INVOICE.NF})}</td>`
+        html += `<td style="font-size: 10px">${invoices[i].getValue({name: CTS.CUSTOMER.NAME, join: CTS.CUSTOMER.ID})}</td>`
+        html += `<td style="font-size: 10px">${invoices[i].getValue({name: CTS.INVOICE.DATA_FATURAMENTO})}</td>`
+        html += `<td style="text-align: end; font-size: 10px;">${formatarMoeda(valor)}</td>`
+        html += `<td style="text-align: end; font-size: 10px;">${com}</td>`
+        html += `<td style="text-align: end; font-size: 10px;">${formatarMoeda(comissao)}</td>`
 
         html += '</tr>'
 
