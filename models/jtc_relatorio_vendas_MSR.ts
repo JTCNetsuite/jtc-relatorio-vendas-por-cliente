@@ -289,13 +289,13 @@ const pageHtml = (invoices: search.Result[], partner: string, data_de, data_ate)
 
         html += '<tr>'
 
-        html += `<td style="font-size: 10px"><strong>${saleorderNum}<strong></td>`
-        html += `<td style="font-size: 10px">${invoices[i].getValue({name: CTS.INVOICE.NF})}</td>`
-        html += `<td style="font-size: 10px">${invoices[i].getValue({name: CTS.CUSTOMER.NAME, join: CTS.CUSTOMER.ID})}</td>`
-        html += `<td style="font-size: 10px">${invoices[i].getValue({name: CTS.INVOICE.DATA_FATURAMENTO})}</td>`
-        html += `<td style="text-align: end; font-size: 10px;">${formatarMoeda(valor)}</td>`
-        html += `<td style="text-align: end; font-size: 10px;">${com}</td>`
-        html += `<td style="text-align: end; font-size: 10px;">${formatarMoeda(comissao)}</td>`
+        html += `<td style="font-size: 13px"><strong>${saleorderNum}<strong></td>`
+        html += `<td style="font-size: 13px">${invoices[i].getValue({name: CTS.INVOICE.NF})}</td>`
+        html += `<td style="font-size: 13px">${invoices[i].getValue({name: CTS.CUSTOMER.NAME, join: CTS.CUSTOMER.ID})}</td>`
+        html += `<td style="font-size: 13px">${invoices[i].getValue({name: CTS.INVOICE.DATA_FATURAMENTO})}</td>`
+        html += `<td style="text-align: end; font-size: 13px;">${formatarMoeda(valor)}</td>`
+        html += `<td style="text-align: end; font-size: 13px;">${com}</td>`
+        html += `<td style="text-align: end; font-size: 13px;">${formatarMoeda(comissao)}</td>`
 
         html += '</tr>'
 
